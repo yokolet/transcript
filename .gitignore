@@ -2,4 +2,5 @@
 cmu_ipa.pickle
 
 # directories
+__pycache__
 tmp
