@@ -4,7 +4,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 import unittest
 from eng_to_ipa.trans_consonant import TransConsonant
 
-class TestTransVowel(unittest.TestCase):
+class TestTransConsonant(unittest.TestCase):
     def setUp(self):
         self.func = TransConsonant().transConsonant
 
