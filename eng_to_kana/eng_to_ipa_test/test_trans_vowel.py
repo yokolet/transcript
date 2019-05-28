@@ -2,10 +2,14 @@ import os
 import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 import unittest
+import pickledb
 from eng_to_ipa.trans_vowel import TransVowel
 
 class TestTransVowel(unittest.TestCase):
     def setUp(self):
+        dbname = os.path.join(os.path.dirname(__file__), '..', 'cmu_ipa.pickle')
+        self.db = pickledb.load(dbname, False)
+        print('SYSPATH', sys.path)
         self.func = TransVowel().transVowel
 
     def test_1(self):
@@ -51,7 +55,23 @@ class TestTransVowel(unittest.TestCase):
             'boxing',
             'google',
             'microsoft',
-            'nation'
+            'nation',
+            'roma',
+            'wood',
+            'thin',
+            'left',
+            'milk',
+            'song',
+            'darling',
+            'yeast',
+            'yes',
+            'hoop',
+            'pop',
+            'cut',
+            'pack',
+            'kiss',
+            'patch',
+            'mesh'
         ]
         trans_map = {
             'fɑðɚ': 'faðaa',
@@ -64,25 +84,25 @@ class TestTransVowel(unittest.TestCase):
             'hæmbɚgɚ': 'hambaagaa',
             'kæt': 'kyat',
             'gæmbʌl': 'gyambul',
-            'gæˈl': 'gyal',
-            'kʌntɹi': 'kantɹi',
-            'mʌŋki': 'moŋki',
+            'gæl': 'gyal',
+            'kʌntɹi': 'kantɹii',
+            'mʌŋki': 'moŋkii',
             'fɹʌnt': 'fɹont',
             'lʌndʌn': 'london',
             'bɑks': 'boks',
-            'stɹɔ': 'stɹoo',
-            'pɔɹt': 'pooɹt',
+            'stɹɔ': 'stɹo',
+            'pɔɹt': 'poot',
             'bʊk': 'buk',
             'bʌlun': 'baluun',
             'ʌbawt': 'abaut',
             'pajlʌt': 'pailot',
-            'wɪnɚ': 'winaa',
+            'wɪnɚ': 'uinaa',
             'mɑmʌ': 'mama',
-            'pumʌ': 'puma',
+            'pumʌ': 'puuma',
             'dej': 'dei',
             'dejvɪd': 'deivid',
             'maj': 'mai',
-            'bɔj': 'booi',
+            'bɔj': 'boi',
             'tɔj': 'toi',
             'fown': 'foon',
             'now': 'noo',
@@ -91,13 +111,32 @@ class TestTransVowel(unittest.TestCase):
             'hɛɹ': 'heaa',
             'tʊɹ': 'tuaa',
             'kjub': 'kyuub',
-            'æmʌzɑˌn': 'amazon',
+            'æmʌzɑˌn': 'amazoˌn',
             'bɑksɪŋ': 'boksiŋ',
             'gugʌl': 'guugul',
-            'majkɹowˌsɔft': 'maikɹosoft',
-            'nejʃʌn': 'neiʃon'
+            'majkɹowˌsɔft': 'maikɹooˌsoft',
+            'nejʃʌn': 'neiʃon',
+            'ɹowmʌ': 'ɹooma',
+            'wʊd': 'ud',
+            'θɪn': 'θin',
+            'lɛft': 'left',
+            'mɪlk': 'milk',
+            'sɔŋ': 'soŋ',
+            'dɑɹlɪŋ': 'daaliŋ',
+            'jist': 'iist',
+            'jɛs': 'ies',
+            'hup': 'huup',
+            'pɑp': 'pop',
+            'kʌt': 'kat',
+            'pæk': 'pak',
+            'kɪs': 'kis',
+            'pæʧ': 'paʧ',
+            'mɛʃ': 'meʃ'
         }
-        print(len(words), len(trans_map))
+        for w in words:
+            ph = self.db.get(w)[0]
+            print(w, ph, trans_map[ph])
+            self.assertEqual(trans_map[ph], self.func(w, ph))
 
 if __name__ == '__main__':
     unittest.main()
