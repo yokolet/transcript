@@ -2,5 +2,6 @@
 cmu_ipa.pickle
 
 # directories
+.vscode
 __pycache__
 tmp
