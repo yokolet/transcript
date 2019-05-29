@@ -1,4 +1,4 @@
-class TransEpentheticVowel:
+class EpentheticVowelHandler:
     def __init__(self):
         self.vowels = 'aeiou'
         self.consym = 'bdfghkmprstz'
@@ -53,7 +53,7 @@ class TransEpentheticVowel:
         else:
             return 's'
 
-    def transEpentheticVowel(self, ph):
+    def addEpentheticVowel(self, ph):
         # 'bdfghkmprstz'
         epenthetic_map = {
             'b': self.bfmprz_rule,

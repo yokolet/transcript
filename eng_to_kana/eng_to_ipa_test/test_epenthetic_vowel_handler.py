@@ -2,11 +2,11 @@ import os
 import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 import unittest
-from eng_to_ipa.trans_epenthetic_vowel import TransEpentheticVowel
+from eng_to_ipa.epenthetic_vowel_handler import EpentheticVowelHandler
 
-class TestTransEpentheticVowel(unittest.TestCase):
+class TestEpentheticVowelHandler(unittest.TestCase):
     def setUp(self):
-        self.func = TransEpentheticVowel().transEpentheticVowel
+        self.func = EpentheticVowelHandler().addEpentheticVowel
 
     def test_1(self):
         expected_pairs = {
