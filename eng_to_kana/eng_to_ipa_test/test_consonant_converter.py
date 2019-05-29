@@ -2,11 +2,11 @@ import os
 import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 import unittest
-from eng_to_ipa.trans_consonant import TransConsonant
+from eng_to_ipa.consonant_converter import ConsonantConverter
 
-class TestTransConsonant(unittest.TestCase):
+class TestConsonantConverter(unittest.TestCase):
     def setUp(self):
-        self.func = TransConsonant().transConsonant
+        self.func = ConsonantConverter().convertConsonant
 
     def test_1(self):
         words = [

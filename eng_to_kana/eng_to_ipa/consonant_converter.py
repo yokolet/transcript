@@ -1,4 +1,4 @@
-class TransConsonant:
+class ConsonantConverter:
     def __init__(self):
         self.vowels = 'aeiou'
         self.consonants = 'dgklmnptvʧŋɹʃðθ'
@@ -75,7 +75,7 @@ class TransConsonant:
         # θ
         return 's'
 
-    def transConsonant(self, word, ph):
+    def convertConsonant(self, word, ph):
         consonant_map = {
             'd': self.d_rule,
             'g': self.gkpt_rule,
