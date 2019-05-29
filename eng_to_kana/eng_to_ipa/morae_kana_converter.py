@@ -1,0 +1,43 @@
+class MoraeKanaConverter:
+    def __init__(self):
+        self.vowels = 'aeiou'
+        self.mora_map = {
+            'a': 'ア', 'i': 'イ', 'u': 'ウ', 'e': 'エ', 'o': 'オ',
+            'ka': 'カ', 'ki': 'キ', 'ku': 'ク', 'ke': 'ケ', 'ko': 'コ',
+            'ga': 'ガ', 'gi': 'ギ', 'gu': 'グ', 'ge': 'ゲ', 'go': 'ゴ',
+            'kya': 'キャ', 'kyu': 'キュ', 'kyo': 'キョ',
+            'gya': 'ギャ', 'gyu': 'ギュ', 'gyo': 'ギョ',
+            'sa': 'サ', 'si': 'シ', 'su': 'ス', 'se': 'セ', 'so': 'ソ',
+            'sha': 'シャ', 'shi': 'シ', 'shu': 'シュ', 'she': 'シェ', 'sho': 'ショ',
+            'za': 'ザ', 'zi':'ジ', 'zu': 'ズ', 'ze': 'ゼ', 'zo': 'ゾ',
+            'ta': 'タ', 'ti': 'チ', 'tu': 'ツ', 'te': 'テ', 'to': 'ト',
+            'cha': 'チャ', 'chi': 'チ', 'chu': 'チュ', 'che': 'チェ', 'cho': 'チョ',
+            'da': 'ダ', 'di': 'ヂ', 'du': 'ヅ', 'de': 'デ', 'do': 'ド',
+            'na': 'ナ', 'ni': 'ニ', 'nu': 'ヌ', 'ne': 'ネ', 'no': 'ノ',
+            'ha': 'ハ', 'hi': 'ヒ', 'hu': 'フ', 'he': 'ヘ', 'ho': 'ホ',
+            'fa': 'ファ', 'fi': 'フィ', 'fu': 'フ', 'fe': 'フェ', 'fo': 'フォ',
+            'ba': 'バ', 'bi': 'ビ', 'bu': 'ブ', 'be': 'ベ', 'bo': 'ボ',
+            'pa': 'パ', 'pi': 'ピ', 'pu': 'プ', 'pe': 'ペ', 'po': 'ポ',
+            'ma': 'マ', 'mi': 'ミ', 'mu': 'ム', 'me': 'メ', 'mo': 'モ',
+            'ya': 'ヤ', 'yu': 'ユ', 'yo': 'ヨ',
+            'ra': 'ラ', 'ri': 'リ', 'ru': 'ル', 're': 'レ', 'ro': 'ロ',
+            'rya': 'リャ', 'ryu': 'リュ', 'ryo': 'リョ',
+            'wa': 'ワ', 'N': 'ン'
+        }
+        self.doubled = 'ー'
+        self.geminate = 'ッ'
+
+    def convertMorae(self, morae):
+        sounds = morae.split('.')
+        result = self.mora_map[sounds[0]]
+        for idx in range(1, len(sounds)):
+            if sounds[idx] in self.vowels and sounds[idx-1][-1] == sounds[idx]:
+                result += self.doubled
+            elif sounds[idx] not in self.vowels and idx+1 < len(sounds) and \
+                sounds[idx] == sounds[idx+1][0]:
+                result += self.geminate
+            else:
+                result += self.mora_map[sounds[idx]]
+        return result
+
+
