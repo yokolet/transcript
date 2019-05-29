@@ -3,14 +3,14 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 import unittest
 import pickledb
-from eng_to_ipa.trans_vowel import TransVowel
+from eng_to_ipa.vowel_converter import VowelConverter
 
-class TestTransVowel(unittest.TestCase):
+class TestVowelConverter(unittest.TestCase):
     def setUp(self):
         dbname = os.path.join(os.path.dirname(__file__), '..', 'cmu_ipa.pickle')
         self.db = pickledb.load(dbname, False)
         print('SYSPATH', sys.path)
-        self.func = TransVowel().transVowel
+        self.func = VowelConverter().convertVowel
 
     def test_1(self):
         words = [

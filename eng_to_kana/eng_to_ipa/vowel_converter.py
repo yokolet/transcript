@@ -1,4 +1,4 @@
-class TransVowel:
+class VowelConverter:
     def __init__(self):
         self.vowels = 'aeiou'
         self.vowsyms = 'aɑʌɚæeɛɪijɔoʊuw'
@@ -123,7 +123,7 @@ class TransVowel:
         # u
         return 'uu'
 
-    def transVowel(self, word, ph):
+    def convertVowel(self, word, ph):
         vowel_map = {
             'wɪɹ': self.wir_rule,
             'wɪ': self.wi_rule,
