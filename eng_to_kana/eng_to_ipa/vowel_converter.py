@@ -1,19 +1,7 @@
 class VowelConverter:
     def __init__(self):
         self.vowels = 'aeiou'
-        self.vowsyms = 'aɑʌɚæeɛɪijɔoʊuw'
-
-    def wir_rule(self, word, w_idx):
-        # wɪɹ
-        return 'uiaa'
-
-    def wi_rule(self, word, w_idx):
-        # wɪ
-        return 'ui'
-
-    def wu_rule(self, word, w_idx):
-        # wʊ
-        return 'u'
+        self.vowsyms = 'aɑʌɚæeɛɪijɔoʊu'
 
     def aj_rule(self, word, w_idx):
         # aj
@@ -125,9 +113,6 @@ class VowelConverter:
 
     def convertVowel(self, word, ph):
         vowel_map = {
-            'wɪɹ': self.wir_rule,
-            'wɪ': self.wi_rule,
-            'wʊ': self.wu_rule,
             'aj': self.aj_rule,
             'ɑɹ': self.ar_rule,
             'aw': self.aw_rule,
@@ -165,10 +150,7 @@ class VowelConverter:
                 p_idx += 1
 
             # convert vowel phonetics
-            if p_idx+3 <= len(ph) and ph[p_idx:p_idx+3] in vowel_map:
-                result += vowel_map[ph[p_idx:p_idx+3]](word, w_idx)
-                p_idx += 3
-            elif p_idx+2 <= len(ph) and ph[p_idx:p_idx+2] in vowel_map:
+            if p_idx+2 <= len(ph) and ph[p_idx:p_idx+2] in vowel_map:
                 result += vowel_map[ph[p_idx:p_idx+2]](word, w_idx)
                 p_idx += 2
             elif p_idx < len(ph) and ph[p_idx] in vowel_map:

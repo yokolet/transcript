@@ -28,7 +28,8 @@ class EpentheticVowelHandler:
         if p_idx == len(ph)-1:
             return ph[p_idx] + 'u'
         elif p_idx+1 < len(ph) and ph[p_idx] != ph[p_idx+1] and \
-            ph[p_idx+1] != 'y' and ph[p_idx+1] not in self.vowels:
+            ph[p_idx+1] != 'y' and ph[p_idx+1] != 'w' \
+            and ph[p_idx+1] not in self.vowels:
             return ph[p_idx] + 'u'
         else:
             return ph[p_idx]

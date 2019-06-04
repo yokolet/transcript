@@ -6,7 +6,9 @@ class MoraeKanaConverter:
             'ka': 'カ', 'ki': 'キ', 'ku': 'ク', 'ke': 'ケ', 'ko': 'コ',
             'ga': 'ガ', 'gi': 'ギ', 'gu': 'グ', 'ge': 'ゲ', 'go': 'ゴ',
             'kya': 'キャ', 'kyu': 'キュ', 'kyo': 'キョ',
+            'kwa': 'クァ', 'kwi': 'クィ', 'kwu': 'クゥ', 'kwe': 'クェ', 'kwo': 'クォ',
             'gya': 'ギャ', 'gyu': 'ギュ', 'gyo': 'ギョ',
+            'gwa': 'グァ', 'gwi': 'グィ', 'gwu': 'グゥ', 'gwe': 'グェ', 'gwo': 'グォ',
             'sa': 'サ', 'si': 'シ', 'su': 'ス', 'se': 'セ', 'so': 'ソ',
             'sha': 'シャ', 'shi': 'シ', 'shu': 'シュ', 'she': 'シェ', 'sho': 'ショ',
             'za': 'ザ', 'zi':'ジ', 'zu': 'ズ', 'ze': 'ゼ', 'zo': 'ゾ',
@@ -24,7 +26,8 @@ class MoraeKanaConverter:
             'ya': 'ヤ', 'yu': 'ユ', 'yo': 'ヨ',
             'ra': 'ラ', 'ri': 'リ', 'ru': 'ル', 're': 'レ', 'ro': 'ロ',
             'rya': 'リャ', 'ryu': 'リュ', 'ryo': 'リョ',
-            'wa': 'ワ', 'N': 'ン'
+            'wa': 'ワ', 'wi': 'ウィ', 'wu': 'ウ', 'we': 'ウェ', 'wo': 'ウォ',
+            'N': 'ン'
         }
         self.doubled = 'ー'
         self.geminate = 'ッ'
