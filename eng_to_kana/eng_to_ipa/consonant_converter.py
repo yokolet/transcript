@@ -96,11 +96,9 @@ class ConsonantConverter:
         result = ''
         p_idx = 0
         while p_idx < len(ph):
-            # skips "ˌ"
             # adds a vowel char as is
             while p_idx < len(ph) and ph[p_idx] not in self.consonants:
-                if ph[p_idx] != 'ˌ':
-                    result += ph[p_idx]
+                result += ph[p_idx]
                 p_idx +=1 
 
             # converts a consonant

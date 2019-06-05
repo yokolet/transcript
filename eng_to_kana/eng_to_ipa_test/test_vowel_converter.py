@@ -7,9 +7,8 @@ from eng_to_ipa.vowel_converter import VowelConverter
 
 class TestVowelConverter(unittest.TestCase):
     def setUp(self):
-        dbname = os.path.join(os.path.dirname(__file__), '..', 'cmu_ipa.pickle')
+        dbname = os.path.join(os.path.dirname(__file__), '..', '..', 'cmu_dict', 'cmu_ipa.pickle')
         self.db = pickledb.load(dbname, False)
-        print('SYSPATH', sys.path)
         self.func = VowelConverter().convertVowel
 
     def test_1(self):
@@ -112,10 +111,10 @@ class TestVowelConverter(unittest.TestCase):
             'hɛɹ': 'heaa',
             'tʊɹ': 'tuaa',
             'kjub': 'kyuub',
-            'æmʌzɑˌn': 'amazoˌn',
+            'æmʌzɑn': 'amazon',
             'bɑksɪŋ': 'boksiŋ',
             'gugʌl': 'guugul',
-            'majkɹowˌsɔft': 'maikɹooˌsoft',
+            'majkɹowsɔft': 'maikɹoosoft',
             'nejʃʌn': 'neiʃon',
             'ɹowmʌ': 'ɹooma',
             'wʊd': 'wud',
