@@ -5,6 +5,7 @@ import os
 import pickledb
 import re
 import sys
+from tqdm import tqdm
 
 CMU_IPA_DIC = 'CMU.in.IPA.txt'
 DEFAULT = 'cmu_ipa.pickle'
@@ -19,7 +20,7 @@ def process_line(db, line):
         key, value = re.split(r'\t+', line.rstrip()) # removes "\n"
         key = KEYPAT.sub('', key[:-1]) # removes "," and "(1) if any"
         value = value.replace('ˈ', '') # removes accent symbol
-        #print('{}: {}'.format(key, value))
+        value = value.replace('ˌ', '') # removes ˌ symbol
         if db.exists(key):
             prev = db.get(key)
             prev.append(value)
@@ -31,7 +32,7 @@ def process_line(db, line):
 def createdb(dbname):
     print('The pickledb, "{}", will be created.'.format(dbname))
     db = pickledb.load(dbname, False)
-    count = 0
+    count, pbar = 0, tqdm(total=133290)
     with open(CMU_IPA_DIC, 'r') as f:
         while True:
             line = f.readline()
@@ -39,10 +40,10 @@ def createdb(dbname):
             process_line(db, line)
             count += 1
             if count % 1000 == 0:
-                print('count: {}'. format(count))
                 db.dump()
+                pbar.update(1000)
+    pbar.close()
     db.dump()
-    #printAllData(db)
 
 def process_args():
     parser = argparse.ArgumentParser(
