@@ -1,6 +1,3 @@
-# pickle database
-cmu_ipa.pickle
-
 # directories
 .vscode
 __pycache__
