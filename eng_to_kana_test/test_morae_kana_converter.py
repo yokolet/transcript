@@ -1,8 +1,8 @@
 import os
 import sys
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'eng_to_kana'))
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 import unittest
-from eng_to_ipa.morae_kana_converter import MoraeKanaConverter
+from eng_to_kana.morae_kana_converter import MoraeKanaConverter
 
 class TestMoraeKanaConverter(unittest.TestCase):
     def setUp(self):

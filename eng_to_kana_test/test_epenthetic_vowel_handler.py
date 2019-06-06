@@ -1,8 +1,8 @@
 import os
 import sys
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'eng_to_kana'))
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 import unittest
-from eng_to_ipa.epenthetic_vowel_handler import EpentheticVowelHandler
+from eng_to_kana.epenthetic_vowel_handler import EpentheticVowelHandler
 
 class TestEpentheticVowelHandler(unittest.TestCase):
     def setUp(self):

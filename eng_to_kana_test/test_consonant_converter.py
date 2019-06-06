@@ -1,8 +1,8 @@
 import os
 import sys
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'eng_to_kana'))
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 import unittest
-from eng_to_ipa.consonant_converter import ConsonantConverter
+from eng_to_kana.consonant_converter import ConsonantConverter
 
 class TestConsonantConverter(unittest.TestCase):
     def setUp(self):
