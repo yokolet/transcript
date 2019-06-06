@@ -197,5 +197,21 @@ class TestConsonantConverter(unittest.TestCase):
             expected = expected_pair[pairs[w]]
             self.assertEqual(expected, self.func(w, ph))
 
+    def test_2(self):
+        expected_pairs = {
+            'what': [('wat', 'watt'), ('hwat', 'hwatt')],
+            'wheat': [('wiit', 'wiit'), ('hwiit', 'hwiit')],
+            'wheezes': [('wiizaz', 'wiizaz'), ('hwiizaz', 'hwiizaz'), ('wiiziz', 'wiiziz')],
+            'when': [('wen', 'weN'), ('hwen', 'hweN'), ('win', 'wiN'), ('hwin', 'hwiN')],
+            'whew': [('wuu', 'wuu'), ('hwuu', 'hwuu'), ('hyuu', 'hyuu')],
+            'which': [('wiʧ', 'wicch'), ('hwiʧ', 'hwicch')],
+            'whitey': [('waitii', 'waitii'), ('hwaitii', 'hwaitii')],
+            'whoa': [('woo', 'woo'), ('hwoo', 'hwoo'), ('hoo', 'hoo')],
+            'why': [('wai', 'wai'), ('hwai', 'hwai')],
+            'with': [('wið', 'wiz'), ('wiθ', 'wis')]}
+        for w, pairs in expected_pairs.items():
+            for p in pairs:
+                self.assertEqual(p[1], self.func(w, p[0]))
+
 if __name__ == '__main__':
     unittest.main()

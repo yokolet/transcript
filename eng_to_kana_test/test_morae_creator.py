@@ -73,5 +73,36 @@ class TestMoraeCreator(unittest.TestCase):
         for key, value in expected_pairs.items():
             self.assertEqual(value, self.func(key))
 
+    def test_2(self):
+        expected_pairs = {
+            'watto': 'wa.t.to',
+            'howatto': 'ho.wa.t.to',
+            'wiito': 'wi.i.to',
+            'howiito': 'ho.wi.i.to',
+            'wiizazu': 'wi.i.za.zu',
+            'howiizazu': 'ho.wi.i.za.zu',
+            'wiizizu': 'wi.i.zi.zu',
+            'weN': 'we.N',
+            'howeN': 'ho.we.N',
+            'wiN': 'wi.N',
+            'howiN': 'ho.wi.N',
+            'wuu': 'wu.u',
+            'howuu': 'ho.wu.u',
+            'hyuu': 'hyu.u',
+            'wicchi': 'wi.c.chi',
+            'howicchi': 'ho.wi.c.chi',
+            'waitii': 'wa.i.ti.i',
+            'howaitii': 'ho.wa.i.ti.i',
+            'woo': 'wo.o',
+            'howoo': 'ho.wo.o',
+            'hoo': 'ho.o',
+            'wai': 'wa.i',
+            'howai': 'ho.wa.i',
+            'wizu': 'wi.zu',
+            'wisu': 'wi.su'
+        }
+        for key, value in expected_pairs.items():
+            self.assertEqual(value, self.func(key))
+
 if __name__ == '__main__':
     unittest.main()

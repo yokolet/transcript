@@ -42,6 +42,8 @@ class EpentheticVowelHandler:
         elif p_idx >= 1 and ph[p_idx-1] == 's' and \
             (p_idx == len(ph) - 1 or ph[p_idx+1] not in self.vowels):
             return 'hu'
+        elif p_idx+1 < len(ph) and ph[p_idx+1] == 'w':
+            return 'ho'
         else:
             return 'h'
 

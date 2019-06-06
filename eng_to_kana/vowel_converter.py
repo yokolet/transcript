@@ -2,6 +2,7 @@ class VowelConverter:
     def __init__(self):
         self.vowels = 'aeiou'
         self.vowsyms = 'aɑʌɚæeɛɪijɔoʊu'
+        # ʤ, ʤʌʤ
 
     def aj_rule(self, word, w_idx):
         # aj
@@ -39,10 +40,14 @@ class VowelConverter:
             return 'a'
         elif w_idx+1 < len(word) and word[w_idx] == 'i' and word[w_idx+1] == 'o':
             return 'o'
-        elif w_idx > 0 and word[w_idx] == 'e' and word[w_idx-1] == 'l':
+        elif w_idx > 0 and w_idx < len(word) and word[w_idx] == 'e' and word[w_idx-1] == 'l':
             return 'u'
-        elif word[w_idx] == 'o':
+        elif w_idx > 0 and w_idx < len(word) and word[w_idx] == 'u' and word[w_idx-1] == 'j':
+            return 'ya'
+        elif w_idx < len(word) and word[w_idx] == 'o':
             return 'o'
+        elif w_idx < len(word) and word[w_idx] == 'e':
+            return 'e'
         else:
             return 'a'
 
@@ -157,9 +162,12 @@ class VowelConverter:
                 result += vowel_map[ph[p_idx]](word, w_idx)
                 p_idx += 1
             
-            # skips vowel chars
-            while w_idx < len(word) and word[w_idx] in self.vowels:
+            # skips vowel chars up to 2
+            count = 0
+            while w_idx < len(word) and word[w_idx] in self.vowels and count < 2:
                 w_idx += 1
+                count += 1
+
         while p_idx < len(ph):
             result += ph[p_idx]
             p_idx += 1

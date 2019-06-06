@@ -132,12 +132,46 @@ class TestVowelConverter(unittest.TestCase):
             'pæk': 'pak',
             'kɪs': 'kis',
             'pæʧ': 'paʧ',
-            'mɛʃ': 'meʃ'
+            'mɛʃ': 'meʃ'          
         }
         for w in words:
             ph = self.db.get(w)[0]
             print(w, ph, trans_map[ph])
             self.assertEqual(trans_map[ph], self.func(w, ph))
+
+    def test_2(self):
+        expected_pairs = {
+            'what': [('wʌt', 'wat'), ('hwʌt', 'hwat')],
+            'wheat': [('wit', 'wiit'), ('hwit', 'hwiit')],
+            'wheezes': [('wizʌz', 'wiizez'), ('hwizʌz', 'hwiizez'), ('wizɪz', 'wiiziz')],
+            'when': [('wɛn', 'wen'), ('hwɛn', 'hwen'), ('wɪn', 'win'), ('hwɪn', 'hwin')],
+            'whew': [('wu', 'wuu'), ('hwu', 'hwuu'), ('hju', 'hyuu')],
+            'which': [('wɪʧ', 'wiʧ'), ('hwɪʧ', 'hwiʧ')],
+            'whitey': [('wajti', 'waitii'), ('hwajti', 'hwaitii')],
+            'whoa': [('wow', 'woo'), ('hwow', 'hwoo'), ('how', 'hoo')],
+            'why': [('waj', 'wai'), ('hwaj', 'hwai')],
+            'with': [('wɪð', 'wið'), ('wɪθ', 'wiθ')]}
+        for w, pairs in expected_pairs.items():
+            for p in pairs:
+                self.assertEqual(p[1], self.func(w, p[0]))
+
+    def test_3(self):
+        expected_pairs = {
+            'edge': [('ɛʤ', 'eʤ')],
+            'judge': [('ʤʌʤ', 'ʤyaʤ')],
+            'mute': [('mjut', 'myuut')],
+            'quack': [('kwæk', 'kwak')],
+            'quake': [('kwejk', 'kweik')],
+            'query': [('kwiɹi', 'kwiiɹii')],
+            'queen': [('kwin', 'kwiin')],
+            'quiet': [('kwajʌt', 'kwaiet')],
+            'quip': [('kwɪp', 'kwip')],
+            'quota': [('kwowtʌ', 'kwoota')],
+            'quote': [('kwowt', 'kwoot')],
+        }
+        for w, pairs in expected_pairs.items():
+            for p in pairs:
+                self.assertEqual(p[1], self.func(w, p[0]))
 
 if __name__ == '__main__':
     unittest.main()
