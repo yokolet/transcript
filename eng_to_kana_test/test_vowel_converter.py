@@ -1,13 +1,13 @@
 import os
 import sys
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'eng_to_kana'))
 import unittest
 import pickledb
 from eng_to_ipa.vowel_converter import VowelConverter
 
 class TestVowelConverter(unittest.TestCase):
     def setUp(self):
-        dbname = os.path.join(os.path.dirname(__file__), '..', '..', 'cmu_dict', 'cmu_ipa.pickle')
+        dbname = os.path.join(os.path.dirname(__file__), '..', 'cmu_dict', 'cmu_ipa.pickle')
         self.db = pickledb.load(dbname, False)
         self.func = VowelConverter().convertVowel
 
