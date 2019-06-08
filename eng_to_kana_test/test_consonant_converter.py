@@ -213,5 +213,33 @@ class TestConsonantConverter(unittest.TestCase):
             for p in pairs:
                 self.assertEqual(p[1], self.func(w, p[0]))
 
+    def test_3(self):
+        expected_pairs = {
+            'adjoin': [('aʤoin', 'ajoiN')],
+            'area': [('eɹiia', 'eriia')],
+            'banquet': [('baŋkwet', 'baNkwett')],
+            'carriage': [('kyaɹiʤ', 'kyarijj'), ('keaaaʤ', 'keaaaj')],
+            'edge': [('eʤ', 'ejj')],
+            'diet': [('daiet', 'daiett')],
+            'judge': [('ʤyaʤ', 'jyajj')],
+            'majority': [('maʤoɹitii', 'majoritii')],
+            'mute': [('myuut', 'myuut')],
+            'orange': [('oɹanʤ', 'oraNj'), ('oɹinʤ', 'oriNj')],
+            'poet': [('pooet', 'pooett')],
+            'quack': [('kwak', 'kwakk')],
+            'quake': [('kweik', 'kweik')],
+            'query': [('kwiiɹii', 'kwiirii')],
+            'queen': [('kwiin', 'kwiiN')],
+            'quiet': [('kwaiet', 'kwaiett')],
+            'quip': [('kwip', 'kwipp')],
+            'quota': [('kwoota', 'kwoota')],
+            'quote': [('kwoot', 'kwoot')],
+            'sorrow': [('soɹoo', 'soroo')],
+            'widget': [('wiʤit', 'wijitt')]
+        }
+        for w, pairs in expected_pairs.items():
+            for p in pairs:
+                self.assertEqual(p[1], self.func(w, p[0]))
+
 if __name__ == '__main__':
     unittest.main()

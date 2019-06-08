@@ -1,7 +1,7 @@
 class ConsonantConverter:
     def __init__(self):
         self.vowels = 'aeiou'
-        self.consonants = 'dgklmnptvʧŋɹʃðθ'
+        self.consonants = 'dgʤklmnptvʧŋɹʃðθ'
 
     def d_rule(self, word, ph, p_idx):
         # d, dz -- dd, z
@@ -15,11 +15,26 @@ class ConsonantConverter:
 
     def gkpt_rule(self, word, ph, p_idx):
         # k, g, p, t -- kk, gg, pp, tt
-        if p_idx >= 1 and ph[p_idx-1] in self.vowels and \
-            (len(ph) <= 2 or ph[p_idx-2] not in self.vowels):
+        # after 3 vowel sounds, like pooet
+        if p_idx >= 3 and ph[p_idx-1] in self.vowels and \
+            ph[p_idx-2] in self.vowels and ph[p_idx-3] in self.vowels:
+            return ph[p_idx]*2
+        # after consonant and a single vowel, like kwip or eʤ
+        # not followed by a vowel, not like maʤoɹitii
+        elif p_idx >= 1 and ph[p_idx-1] in self.vowels and \
+            (p_idx == 1 or (ph[p_idx-2] not in self.vowels and \
+                (p_idx == len(ph)-1 or ph[p_idx+1] not in self.vowels))):
             return ph[p_idx]*2
         else:
             return  ph[p_idx]
+
+    def dg_rule(self, word, ph, p_idx):
+        # ʤ -- j, jj
+        if p_idx == len(ph) - 1 and p_idx >= 1 and ph[p_idx-1] in self.vowels and \
+            (len(ph) <= 2 or ph[p_idx-2] not in self.vowels):
+            return 'jj'
+        else:
+            return 'j'
 
     def l_rule(self, word, ph, p_idx):
         # l -- r
@@ -28,7 +43,7 @@ class ConsonantConverter:
     def mn_rule(self, word, ph, p_idx):
         # m, n not followed by vowel -- N
         # m, n at the end -- N
-        if p_idx+1 < len(ph) and ph[p_idx+1] not in self.vowels:
+        if p_idx > 0 and p_idx+1 < len(ph) and ph[p_idx+1] not in self.vowels:
             return 'N'
         elif p_idx == len(ph)-1 and ph[p_idx] == 'n':
             return 'N'
@@ -79,6 +94,7 @@ class ConsonantConverter:
         consonant_map = {
             'd': self.d_rule,
             'g': self.gkpt_rule,
+            'ʤ': self.dg_rule,
             'k': self.gkpt_rule,
             'l': self.l_rule,
             'm': self.mn_rule,
