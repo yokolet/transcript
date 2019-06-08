@@ -155,19 +155,24 @@ class VowelConverter:
                 p_idx += 1
 
             # convert vowel phonetics
-            if p_idx+2 <= len(ph) and ph[p_idx:p_idx+2] in vowel_map:
-                result += vowel_map[ph[p_idx:p_idx+2]](word, w_idx)
-                p_idx += 2
-            elif p_idx < len(ph) and ph[p_idx] in vowel_map:
-                result += vowel_map[ph[p_idx]](word, w_idx)
-                p_idx += 1
-            
-            # skips vowel chars up to 2
-            count = 0
-            while w_idx < len(word) and word[w_idx] in self.vowels and count < 2:
-                w_idx += 1
-                count += 1
+            while p_idx < len(ph) and ph[p_idx] in self.vowsyms:
+                if w_idx+1 < len(word) and word[w_idx] == 'u' \
+                    and word[w_idx+1] in self.vowels:
+                    w_idx += 1
+                if p_idx+2 <= len(ph) and ph[p_idx:p_idx+2] in vowel_map:
+                    result += vowel_map[ph[p_idx:p_idx+2]](word, w_idx)
+                    p_idx += 2
+                    w_idx += 1
+                elif p_idx < len(ph) and ph[p_idx] in vowel_map:
+                    result += vowel_map[ph[p_idx]](word, w_idx)
+                    p_idx += 1
+                    w_idx += 1
 
+            # skips rest of vowel chars
+            while w_idx < len(word) and word[w_idx] in self.vowels:
+                w_idx += 1
+
+        # adds rest of consonant symbols
         while p_idx < len(ph):
             result += ph[p_idx]
             p_idx += 1

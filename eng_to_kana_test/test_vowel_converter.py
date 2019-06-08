@@ -132,7 +132,7 @@ class TestVowelConverter(unittest.TestCase):
             'pæk': 'pak',
             'kɪs': 'kis',
             'pæʧ': 'paʧ',
-            'mɛʃ': 'meʃ'          
+            'mɛʃ': 'meʃ'
         }
         for w in words:
             ph = self.db.get(w)[0]
@@ -157,9 +157,14 @@ class TestVowelConverter(unittest.TestCase):
 
     def test_3(self):
         expected_pairs = {
+            'adjoin': [('ʌʤɔjn', 'aʤoin')],
+            'banquet': [('bæŋkwʌt', 'baŋkwet')],
+            'carriage': [('kæɹɪʤ', 'kyaɹiʤ'), ('kɛɹʌʤ', 'keaaaʤ')],
             'edge': [('ɛʤ', 'eʤ')],
+            'diet': [('dajʌt', 'daiet')],
             'judge': [('ʤʌʤ', 'ʤyaʤ')],
             'mute': [('mjut', 'myuut')],
+            'poet': [('powʌt', 'pooet')],
             'quack': [('kwæk', 'kwak')],
             'quake': [('kwejk', 'kweik')],
             'query': [('kwiɹi', 'kwiiɹii')],
@@ -168,6 +173,7 @@ class TestVowelConverter(unittest.TestCase):
             'quip': [('kwɪp', 'kwip')],
             'quota': [('kwowtʌ', 'kwoota')],
             'quote': [('kwowt', 'kwoot')],
+            'widget': [('wɪʤɪt', 'wiʤit')]
         }
         for w, pairs in expected_pairs.items():
             for p in pairs:
