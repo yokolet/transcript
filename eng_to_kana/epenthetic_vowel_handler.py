@@ -1,7 +1,7 @@
 class EpentheticVowelHandler:
     def __init__(self):
         self.vowels = 'aeiou'
-        self.consym = 'bdfghkmprstz'
+        self.consym = 'bdfghjkmprstz'
 
     def dt_rule(self, ph, p_idx):
         # d, t
@@ -13,8 +13,8 @@ class EpentheticVowelHandler:
         else:
             return ph[p_idx]
 
-    def bfmprz_rule(self, ph, p_idx):
-        # b, f, m, p, r, z
+    def bfprz_rule(self, ph, p_idx):
+        # b, f, p, r, z
         if p_idx == len(ph)-1:
             return ph[p_idx] + 'u'
         elif p_idx+1 < len(ph) and ph[p_idx] != ph[p_idx+1] and \
@@ -23,8 +23,8 @@ class EpentheticVowelHandler:
         else:
             return ph[p_idx]
 
-    def kg_rule(self, ph, p_idx):
-        # k, g
+    def kgm_rule(self, ph, p_idx):
+        # k, g, m
         if p_idx == len(ph)-1:
             return ph[p_idx] + 'u'
         elif p_idx+1 < len(ph) and ph[p_idx] != ph[p_idx+1] and \
@@ -56,27 +56,38 @@ class EpentheticVowelHandler:
         else:
             return 's'
 
+    def j_rule(self, ph, p_idx):
+        if p_idx == len(ph) - 1:
+            return 'ji'
+        else:
+            return 'j'
+
     def addEpentheticVowel(self, ph):
         # 'bdfghkmprstz'
         epenthetic_map = {
-            'b': self.bfmprz_rule,
+            'b': self.bfprz_rule,
             'd': self.dt_rule,
-            'f': self.bfmprz_rule,
-            'g': self.kg_rule,
+            'f': self.bfprz_rule,
+            'g': self.kgm_rule,
             'h': self.h_rule,
-            'k': self.kg_rule,
-            'm': self.bfmprz_rule,
-            'p': self.bfmprz_rule,
-            'r': self.bfmprz_rule,
+            'j': self.j_rule,
+            'k': self.kgm_rule,
+            'm': self.kgm_rule,
+            'p': self.bfprz_rule,
+            'r': self.bfprz_rule,
             's': self.s_rule,
             't': self.dt_rule,
-            'z': self.bfmprz_rule
+            'z': self.bfprz_rule
         }
         result = ''
         p_idx = 0
         while p_idx < len(ph):
             while p_idx < len(ph) and ph[p_idx] not in self.consym:
-                result += ph[p_idx]
+                # skip if the same vowel continues more than two
+                if p_idx >= 2 and ph[p_idx] == ph[p_idx-1] and ph[p_idx] == ph[p_idx-2]:
+                    pass # no-op
+                else:
+                    result += ph[p_idx]
                 p_idx += 1
             
             if p_idx < len(ph) and ph[p_idx] in self.consym:
