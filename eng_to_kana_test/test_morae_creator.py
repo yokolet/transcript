@@ -69,7 +69,7 @@ class TestMoraeCreator(unittest.TestCase):
             'kisu': 'ki.su',
             'pacchi': 'pa.c.chi', 
             'messhu': 'me.s.shu'
-            }
+        }
         for key, value in expected_pairs.items():
             self.assertEqual(value, self.func(key))
 
@@ -100,6 +100,35 @@ class TestMoraeCreator(unittest.TestCase):
             'howai': 'ho.wa.i',
             'wizu': 'wi.zu',
             'wisu': 'wi.su'
+        }
+        for key, value in expected_pairs.items():
+            self.assertEqual(value, self.func(key))
+
+    def test_3(self):
+        expected_pairs = {
+            'ajoiN': 'a.jo.i.N',
+            'eriia': 'e.ri.i.a',
+            'baNkwetto': 'ba.N.kwe.t.to',
+            'kyarijji': 'kya.ri.j.ji',
+            'keaaji': 'ke.a.a.ji',
+            'ejji': 'e.j.ji',
+            'daietto': 'da.i.e.t.to',
+            'jyajji': 'jya.j.ji',
+            'majoritii': 'ma.jo.ri.ti.i',
+            'myuuto': 'myu.u.to',
+            'oraNji': 'o.ra.N.ji',
+            'oriNji': 'o.ri.N.ji',
+            'pooetto': 'po.o.e.t.to',
+            'kwakku': 'kwa.k.ku',
+            'kweiku': 'kwe.i.ku',
+            'kwiirii': 'kwi.i.ri.i',
+            'kwiiN': 'kwi.i.N',
+            'kwaietto': 'kwa.i.e.t.to',
+            'kwippu': 'kwi.p.pu',
+            'kwoota': 'kwo.o.ta',
+            'kwooto': 'kwo.o.to',
+            'soroo': 'so.ro.o',
+            'wijitto': 'wi.ji.t.to'
         }
         for key, value in expected_pairs.items():
             self.assertEqual(value, self.func(key))
