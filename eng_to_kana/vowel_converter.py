@@ -48,6 +48,8 @@ class VowelConverter:
             return 'o'
         elif w_idx < len(word) and word[w_idx] == 'e':
             return 'e'
+        elif w_idx < len(word) and word[w_idx] == 'i':
+            return 'i'
         else:
             return 'a'
 
@@ -159,7 +161,8 @@ class VowelConverter:
                 if w_idx+1 < len(word) and word[w_idx] == 'u' \
                     and word[w_idx+1] in self.vowels:
                     w_idx += 1
-                if p_idx+2 <= len(ph) and ph[p_idx:p_idx+2] in vowel_map:
+                if p_idx+2 <= len(ph) and ph[p_idx:p_idx+2] in vowel_map and \
+                    (p_idx+2 == len(ph) or ph[p_idx+1] != 'ɹ' or ph[p_idx+2] not in self.vowsyms):
                     result += vowel_map[ph[p_idx:p_idx+2]](word, w_idx)
                     p_idx += 2
                     w_idx += 1

@@ -158,12 +158,15 @@ class TestVowelConverter(unittest.TestCase):
     def test_3(self):
         expected_pairs = {
             'adjoin': [('ʌʤɔjn', 'aʤoin')],
+            'area': [('ɛɹiʌ', 'eɹiia')],
             'banquet': [('bæŋkwʌt', 'baŋkwet')],
-            'carriage': [('kæɹɪʤ', 'kyaɹiʤ'), ('kɛɹʌʤ', 'keaaaʤ')],
+            'carriage': [('kæɹɪʤ', 'kyaɹiʤ'), ('kɛɹʌʤ', 'keɹiʤ')],
             'edge': [('ɛʤ', 'eʤ')],
             'diet': [('dajʌt', 'daiet')],
             'judge': [('ʤʌʤ', 'ʤyaʤ')],
             'mute': [('mjut', 'myuut')],
+            'majority': [('mʌʤɔɹʌti', 'maʤoɹitii')],
+            'orange': [('ɔɹʌnʤ', 'oɹanʤ'), ('ɔɹɪnʤ', 'oɹinʤ')],
             'poet': [('powʌt', 'pooet')],
             'quack': [('kwæk', 'kwak')],
             'quake': [('kwejk', 'kweik')],
@@ -173,6 +176,7 @@ class TestVowelConverter(unittest.TestCase):
             'quip': [('kwɪp', 'kwip')],
             'quota': [('kwowtʌ', 'kwoota')],
             'quote': [('kwowt', 'kwoot')],
+            'sorrow': [('sɑɹow', 'soɹoo')],
             'widget': [('wɪʤɪt', 'wiʤit')]
         }
         for w, pairs in expected_pairs.items():
