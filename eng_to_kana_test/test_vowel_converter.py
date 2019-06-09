@@ -183,5 +183,24 @@ class TestVowelConverter(unittest.TestCase):
             for p in pairs:
                 self.assertEqual(p[1], self.func(w, p[0]))
 
+    def test_4(self):
+        expected_pairs = {
+            'call': [('kɔl', 'kol')],
+            'did': [('dɪd', 'did')],
+            'finger': [('fɪŋgɚ', 'fiŋgaa')],
+            'here': [('hiɹ', 'hiaa')],
+            'idle': [('ajdʌl', 'aidol')],
+            'lady': [('lejdi', 'leidii')],
+            'little': [('lɪtʌl', 'litol')],
+            'mother': [('mʌðɚ', 'maðaa')],
+            'pleasure': [('plɛʒɚ', 'pleʒaa')],
+            'pure': [('pjʊɹ', 'pyuaa')],
+            'tourist': [('tʊɹʌst', 'tuɹist')],
+            'vision': [('vɪʒʌn', 'viʒon')],
+        }
+        for w, pairs in expected_pairs.items():
+            for p in pairs:
+                self.assertEqual(p[1], self.func(w, p[0]))
+
 if __name__ == '__main__':
     unittest.main()

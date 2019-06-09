@@ -41,10 +41,13 @@ class VowelConverter:
         elif w_idx+1 < len(word) and word[w_idx] == 'i' and word[w_idx+1] == 'o':
             return 'o'
         elif w_idx > 0 and w_idx < len(word) and word[w_idx] == 'e' and word[w_idx-1] == 'l':
-            return 'u'
+            if w_idx-2 >=0 and word[w_idx-2] in ['d', 't']:
+                return 'o'
+            else:
+                return 'u'
         elif w_idx > 0 and w_idx < len(word) and word[w_idx] == 'u' and word[w_idx-1] == 'j':
             return 'ya'
-        elif w_idx < len(word) and word[w_idx] == 'o':
+        elif w_idx < len(word) and word[w_idx] == 'o' and word != 'mother':
             return 'o'
         elif w_idx < len(word) and word[w_idx] == 'e':
             return 'e'
@@ -67,6 +70,10 @@ class VowelConverter:
 
     def ir_rule(self, word, w_idx):
         # ɪɹ
+        return 'iaa'
+
+    def iir_long_rule(self, word, w_idx):
+        # iɹ
         return 'iaa'
 
     def i_long_rule(self, word, w_idx):
@@ -106,6 +113,10 @@ class VowelConverter:
         # ɔ
         return 'o'
 
+    def jur_rule(self, word, w_idx):
+        # jʊɹ
+        return 'yuaa'
+
     def ur_rule(self, word, w_idx):
         # ʊɹ
         return 'uaa'
@@ -132,6 +143,7 @@ class VowelConverter:
             'ɛ': self.e_rule,
             'ɪɹ': self.ir_rule,
             'i': self.i_long_rule,
+            'iɹ': self.ir_rule,
             'ɪ': self.i_short_rule,
             'ju': self.ju_rule,
             'ji': self.ji_rule,
@@ -140,6 +152,7 @@ class VowelConverter:
             'ɔɹ': self.or_rule,
             'ow': self.ow_rule,
             'ɔ': self.o_rule,
+            'jʊɹ': self.jur_rule,
             'ʊɹ': self.ur_rule,
             'ʊ': self.u_short_rule,
             'u': self.u_long_rule
@@ -161,7 +174,11 @@ class VowelConverter:
                 if w_idx+1 < len(word) and word[w_idx] == 'u' \
                     and word[w_idx+1] in self.vowels:
                     w_idx += 1
-                if p_idx+2 <= len(ph) and ph[p_idx:p_idx+2] in vowel_map and \
+                if p_idx+3 <= len(ph) and ph[p_idx:p_idx+3] in vowel_map:
+                    result += vowel_map[ph[p_idx:p_idx+3]](word, w_idx)
+                    p_idx += 3
+                    w_idx += 1
+                elif p_idx+2 <= len(ph) and ph[p_idx:p_idx+2] in vowel_map and \
                     (p_idx+2 == len(ph) or ph[p_idx+1] != 'ɹ' or ph[p_idx+2] not in self.vowsyms):
                     result += vowel_map[ph[p_idx:p_idx+2]](word, w_idx)
                     p_idx += 2
