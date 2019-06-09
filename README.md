@@ -54,7 +54,7 @@ As in the document, the transcription is done in 6 steps:
 This tool uses American pronouciation for the easy access to the free dictionary.
 However, Japanese sounds are sometime not like American English. Perhaps, British English
 dictionary may give better Katakana. Often, a Katakana transcription looks not natural, for example,
-twitter -> トウィター but actually ツイッター.
+twitter -> トウィター but actually it should be ツイッター.
 
 ## How to use
 
@@ -71,6 +71,14 @@ pip install -r requirements.txt
 
 ```
 eng_to_kana/eng_to_kana.py word1 word2 word3 ...
+```
+
+### Example
+
+```
+$ eng_to_kana/eng_to_kana.py where amazon apple facebook microsoft twitter
+['where', 'amazon', 'apple', 'facebook', 'microsoft', 'twitter']
+[['ウェアー', 'ホウェアー'], ['アマゾン'], ['アップル'], ['E_DIC'], ['マイクローソフト'], ['トウィター']]
 ```
 
 ### Error code
