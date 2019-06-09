@@ -73,17 +73,17 @@ pip install -r requirements.txt
 eng_to_kana/eng_to_kana.py word1 word2 word3 ...
 ```
 
-### Example
-
-```
-$ eng_to_kana/eng_to_kana.py where amazon apple facebook microsoft twitter
-['where', 'amazon', 'apple', 'facebook', 'microsoft', 'twitter']
-[['ウェアー', 'ホウェアー'], ['アマゾン'], ['アップル'], ['E_DIC'], ['マイクローソフト'], ['トウィター']]
-```
-
 ### Error code
 - E_DIC: given word is not in CMU-IPA Dictionary
 - E_KEY: an error from transcription process
+
+### Example
+
+```
+$ eng_to_kana/eng_to_kana.py where amazon apple facebook google microsoft twitter
+['where', 'amazon', 'apple', 'facebook', 'google', 'microsoft', 'twitter']
+[['ウェアー', 'ホウェアー'], ['アマゾン'], ['アップル'], ['E_DIC'], ['グーグル'], ['マイクローソフト'], ['トウィター']]
+```
 
 ## Contributing
 
