@@ -16,4 +16,4 @@ class TestEngToKana(unittest.TestCase):
 
     def test_2(self):
         words = ['gaga']
-        self.assertEqual([[]], self.list_func(words))
+        self.assertEqual([['E_DIC']], self.list_func(words))

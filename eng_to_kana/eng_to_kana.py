@@ -25,14 +25,14 @@ class EngToKana:
         try:
             phs = self.db.get(word)
             if not phs:
-                return []
+                return ['E_DIC']
             phs1 = [self.vowel_fn(word, ph) for ph in phs]
             phs2 = [self.consonant_fn(word, ph) for ph in phs1]
             phs3 = [self.epenthetic_fn(ph) for ph in phs2]
             moraes = [self.morae_fn(ph) for ph in phs3]
             return [self.kana_fn(m) for m in moraes]
         except KeyError:
-            return []
+            return ['E_KEY']
 
     def fromFile(self, filename):
         print('[process words in {}]'.format(filename))
