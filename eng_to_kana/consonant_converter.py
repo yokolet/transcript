@@ -1,7 +1,7 @@
 class ConsonantConverter:
     def __init__(self):
         self.vowels = 'aeiou'
-        self.consonants = 'dgʤklmnptvʧŋɹʃðθ'
+        self.consonants = 'dgʤʒklmnptvʧŋɹʃðθ'
 
     def d_rule(self, word, ph, p_idx):
         # d, dz -- dd, z
@@ -36,6 +36,10 @@ class ConsonantConverter:
         else:
             return 'j'
 
+    def g_short_rule(self, word, ph, p_idx):
+        # ʒ
+        return 'j'
+
     def l_rule(self, word, ph, p_idx):
         # l -- r
         return 'r'
@@ -65,7 +69,9 @@ class ConsonantConverter:
     def ng_rule(self, word, ph, p_idx):
         # ŋ -- N or Ng
         # TODO: darling --> daariN
-        if 'ng' in word:
+        if p_idx+1 < len(ph) and ph[p_idx+1] == 'g':
+            return 'N'
+        elif 'ng' in word:
             return 'Ng'
         else:
             return 'N'
@@ -95,6 +101,7 @@ class ConsonantConverter:
             'd': self.d_rule,
             'g': self.gkpt_rule,
             'ʤ': self.dg_rule,
+            'ʒ': self.g_short_rule,
             'k': self.gkpt_rule,
             'l': self.l_rule,
             'm': self.mn_rule,

@@ -241,5 +241,24 @@ class TestConsonantConverter(unittest.TestCase):
             for p in pairs:
                 self.assertEqual(p[1], self.func(w, p[0]))
 
+    def test_4(self):
+        expected_pairs = {
+            'call': [('kol', 'kor')],
+            'did': [('did', 'didd')],
+            'finger': [('fiŋgaa', 'fiNgaa')],
+            'here': [('hiaa', 'hiaa')],
+            'idle': [('aidol', 'aidor')],
+            'lady': [('leidii', 'reidii')],
+            'little': [('litol', 'ritor')],
+            'mother': [('maðaa', 'mazaa')],
+            'pleasure': [('pleʒaa', 'prejaa')],
+            'pure': [('pyuaa', 'pyuaa')],
+            'tourist': [('tuɹist', 'turist')],
+            'vision': [('viʒon', 'bijoN')],
+        }
+        for w, pairs in expected_pairs.items():
+            for p in pairs:
+                self.assertEqual(p[1], self.func(w, p[0]))
+
 if __name__ == '__main__':
     unittest.main()
