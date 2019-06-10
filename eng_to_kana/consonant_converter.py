@@ -15,15 +15,18 @@ class ConsonantConverter:
 
     def gkpt_rule(self, word, ph, p_idx):
         # k, g, p, t -- kk, gg, pp, tt
+        # two letters, eʤ, æt or ʌp
+        if len(ph) == 2 and p_idx == 1:
+            return ph[p_idx]*2
         # after 3 vowel sounds, like pooet
-        if p_idx >= 3 and ph[p_idx-1] in self.vowels and \
+        elif p_idx >= 3 and ph[p_idx-1] in self.vowels and \
             ph[p_idx-2] in self.vowels and ph[p_idx-3] in self.vowels:
             return ph[p_idx]*2
-        # after consonant and a single vowel, like kwip or eʤ
+        # after consonant and a single vowel, like kwip
         # not followed by a vowel, not like maʤoɹitii
-        elif p_idx >= 1 and ph[p_idx-1] in self.vowels and \
-            (p_idx == 1 or (ph[p_idx-2] not in self.vowels and \
-                (p_idx == len(ph)-1 or ph[p_idx+1] not in self.vowels))):
+        elif p_idx >= 2 and ph[p_idx-1] in self.vowels and \
+            ph[p_idx-2] not in self.vowels and \
+            (p_idx == len(ph)-1 or ph[p_idx+1] not in self.vowels):
             return ph[p_idx]*2
         else:
             return  ph[p_idx]
@@ -45,9 +48,10 @@ class ConsonantConverter:
         return 'r'
 
     def mn_rule(self, word, ph, p_idx):
-        # m, n not followed by vowel -- N
+        # m, n not followed by vowel -- N and y
         # m, n at the end -- N
-        if p_idx > 0 and p_idx+1 < len(ph) and ph[p_idx+1] not in self.vowels:
+        if p_idx > 0 and p_idx+1 < len(ph) and \
+            ph[p_idx+1] not in self.vowels and ph[p_idx+1] != 'y':
             return 'N'
         elif p_idx == len(ph)-1 and ph[p_idx] == 'n':
             return 'N'

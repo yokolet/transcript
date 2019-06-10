@@ -260,5 +260,29 @@ class TestConsonantConverter(unittest.TestCase):
             for p in pairs:
                 self.assertEqual(p[1], self.func(w, p[0]))
 
+    def test_5(self):
+        expected_pairs = {
+            'abasia': [('abeiʒyaa', 'abeijyaa')],
+            'accuracies': [('akyuasiiz', 'akyuasiiz')],
+            'aigner': [('einaa', 'einaa'), ('enyei', 'enyei'), ('eiknaa', 'eiknaa')],
+            'akiyama': [('akiiyama', 'akiiyama')],
+            'alejo': [('aleiyoo', 'areiyoo')],
+            'augustyniak': [('augastiniiak', 'augastiniiakk')],
+            'avignon': [('avinyon', 'abinyoN')],
+            'ayyash': [('aiyaʃ', 'aiyassh')],
+            'beaulieu': [('boolyu', 'booryu')],
+            'bedient': [('biidient', 'biidieNt')],
+            "c'mon": [('kamon', 'kamoN')],
+            'chojnacki': [('ʧoinatskii', 'choinattskii')],
+            'dr': [('dɹaiv', 'draib'), ('daktaa', 'dakktaa')],
+            'filyaw': [('filiiav', 'firiiab'), ('filyoo', 'firyoo')],
+            'fojtik': [('faitik', 'faitikk')],
+            'horejsi': [('hoɹeiji', 'horeiji')]
+        }
+        for w, pairs in expected_pairs.items():
+            for p in pairs:
+                self.assertEqual(p[1], self.func(w, p[0]))
+
+
 if __name__ == '__main__':
     unittest.main()
