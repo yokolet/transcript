@@ -202,5 +202,28 @@ class TestVowelConverter(unittest.TestCase):
             for p in pairs:
                 self.assertEqual(p[1], self.func(w, p[0]))
 
+    def test_5(self):
+        expected_pairs = {
+            'abasia': [('ʌbejʒjʌ', 'abeiʒyaa')],
+            'accuracies': [('ækjɚʌsiz', 'akyuasiiz')],
+            'aigner': [('ejnɚ', 'einaa'), ('ɛnjej', 'enyei'), ('ejknɚ', 'eiknaa')],
+            'akiyama': [('ɑkijɑmʌ', 'akiiyama')],
+            'alejo': [('ɑlejjow', 'aleiyoo')],
+            'augustyniak': [('awgʌstɪniæk', 'augastiniiak')],
+            'avignon': [('ævɪnjɔn', 'avinyon')],
+            'ayyash': [('ajjæʃ', 'aiyaʃ')],
+            'beaulieu': [('bowljʊ', 'boolyu')],
+            'bedient': [('bidjɪnt', 'biidient')],
+            "c'mon": [('kʌmɑn', 'kamon')],
+            'chojnacki': [('ʧʌjnɑtski', 'ʧoinatskii')],
+            'dr': [('dɹajv', 'dɹaiv'), ('dɑktɚ', 'daktaa')],
+            'filyaw': [('fɪliɑv', 'filiiav'), ('fɪljaw', 'filyoo')],
+            'fojtik': [('fɑjtɪk', 'faitik')],
+            'horejsi': [('hɔɹejjsi', 'hoɹeiji')]
+        }
+        for w, pairs in expected_pairs.items():
+            for p in pairs:
+                self.assertEqual(p[1], self.func(w, p[0]))
+
 if __name__ == '__main__':
     unittest.main()
