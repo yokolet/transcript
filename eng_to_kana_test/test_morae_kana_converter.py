@@ -151,5 +151,31 @@ class TestMoraeKanaConverter(unittest.TestCase):
         for key, value in expected_pairs.items():
             self.assertEqual(value, self.func(key))
 
+    def test_5(self):
+        expected_pairs = {
+            'a.be.i.jya.a': 'アベイジャー',
+            'a.kyu.a.si.i.zu': 'アキュアシーズ',
+            'e.i.na.a': 'エイナー',
+            'e.nye.i': 'エニェイ',
+            'e.i.ku.na.a': 'エイクナー',
+            'a.ki.i.ya.ma': 'アキーヤマ',
+            'a.re.i.yo.o': 'アレイヨー',
+            'a.u.ga.su.ti.ni.i.a.k.ku': 'アウガスティニーアック',
+            'a.bi.nyo.N': 'アビニョン',
+            'a.i.ya.s.shu': 'アイヤッシュ',
+            'bo.o.ryu': 'ボーリュ',
+            'bi.i.di.e.N.to': 'ビーディエント',
+            'ka.mo.N': 'カモン',
+            'cho.i.na.t.to.su.ki.i': 'チョイナットスキー',
+            'do.ra.i.bu': 'ドライブ',
+            'da.k.ku.ta.a': 'ダックター',
+            'fi.ri.i.a.bu': 'フィリーアブ',
+            'fi.ryo.o': 'フィリョー',
+            'fa.i.ti.k.ku': 'ファイティック',
+            'ho.re.i.ji': 'ホレイジ'
+        }
+        for key, value in expected_pairs.items():
+            self.assertEqual(value, self.func(key))
+
 if __name__ == '__main__':
     unittest.main()
