@@ -4,6 +4,9 @@ This repository has a tool to transcript English word to Japanese Katakana expre
 In Japanese, Katakana is a good sound expression for a foreign word.
 This tool doesn't translate but gives a sound counterpart of English word.
 
+This repository provides a commandline interface. Another repository, [https://github.com/yokolet/transcript-web](https://github.com/yokolet/transcript-web), provides GraphQL endpoint.
+The web version is live at [https://agile-plateau-86972.herokuapp.com/graphql](https://agile-plateau-86972.herokuapp.com/graphql).
+
 ## How it is transcripted
 
 This tool followed the method described in the document, [Japanese/Transcribing English to Japanese](https://en.wikibooks.org/wiki/Japanese/Transcribing_English_to_Japanese).
