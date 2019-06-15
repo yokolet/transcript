@@ -9,7 +9,7 @@ class VowelConverter:
         return 'ai'
     
     def ar_rule(self, word, w_idx):
-        # ɑɹ
+        # ɑɹ, ɑw
         return 'aa'
 
     def aw_rule(self, word, w_idx):
@@ -176,6 +176,7 @@ class VowelConverter:
             'ɑj': self.aj_rule,
             'ɑɹ': self.ar_rule,
             'aw': self.aw_rule,
+            'ɑw': self.ar_rule,
             'ɑ': self.a_short_rule,
             'ɚ': self.a_long_rule,
             'æ': self.ae_rule,

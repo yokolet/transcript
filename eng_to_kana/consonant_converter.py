@@ -37,9 +37,15 @@ class ConsonantConverter:
 
     def dg_rule(self, word, ph, p_idx):
         # ʤ -- j, jj
-        if p_idx == len(ph) - 1 and p_idx >= 1 and ph[p_idx-1] in self.vowels and \
-            (len(ph) <= 2 or ph[p_idx-2] not in self.vowels):
-            return 'jj'
+        if p_idx >= 1 and ph[p_idx-1] in self.vowels:
+            if len(ph) <= 2:
+                return 'jj'
+            elif p_idx+1 < len(ph) and ph[p_idx+1] in self.vowels:
+                return 'j'
+            elif p_idx-2 >= 0 and ph[p_idx-2] not in self.vowels:
+                return 'jj'
+            else:
+                return 'j'
         else:
             return 'j'
 

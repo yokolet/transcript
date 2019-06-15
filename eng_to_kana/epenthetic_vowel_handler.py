@@ -59,6 +59,11 @@ class EpentheticVowelHandler:
     def j_rule(self, ph, p_idx):
         if p_idx == len(ph) - 1:
             return 'ji'
+        elif p_idx+1 < len(ph) and ph[p_idx+1] not in self.vowels:
+            if ph[p_idx+1] == 'j' or ph[p_idx+1] == 'y':
+                return 'j'
+            else:
+                return 'ji'
         else:
             return 'j'
 
