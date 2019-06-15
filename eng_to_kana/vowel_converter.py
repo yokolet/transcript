@@ -43,6 +43,8 @@ class VowelConverter:
         elif w_idx > 0 and w_idx < len(word) and word[w_idx] == 'e' and word[w_idx-1] == 'l':
             if w_idx-2 >=0 and word[w_idx-2] in ['d', 't']:
                 return 'o'
+            elif w_idx+1 < len(word) and word[w_idx+1] == "t":
+                return 'e'
             else:
                 return 'u'
         elif w_idx > 0 and w_idx < len(word) and word[w_idx] == 'u' and word[w_idx-1] == 'j':
@@ -139,7 +141,10 @@ class VowelConverter:
 
     def o_rule(self, word, w_idx):
         # ɔ
-        return 'o'
+        if w_idx+1 < len(word) and word[w_idx] == 'a' and word[w_idx+1] == 'u':
+            return 'oo'
+        else:
+            return 'o'
 
     def jur_rule(self, word, w_idx):
         # jʊɹ

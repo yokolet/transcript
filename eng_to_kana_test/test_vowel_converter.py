@@ -225,5 +225,19 @@ class TestVowelConverter(unittest.TestCase):
             for p in pairs:
                 self.assertEqual(p[1], self.func(w, p[0]))
 
+    def test_6(self):
+        expected_pairs = {
+            'applaud': [('ʌplɔd', 'aplood')],
+            'apple': [('æpʌl', 'apul')],
+            'applebee': [('æpʌlbi', 'apulbii')],
+            'applet': [('æplʌt', 'aplet')],
+            'application': [('æplʌkejʃʌn', 'aplikeiʃon')],
+            'apply': [('ʌplaj', 'aplai')],
+            'pineapple': [('pajnæpʌl', 'painapul')]
+        }
+        for w, pairs in expected_pairs.items():
+            for p in pairs:
+                self.assertEqual(p[1], self.func(w, p[0]))
+
 if __name__ == '__main__':
     unittest.main()

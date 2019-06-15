@@ -283,6 +283,19 @@ class TestConsonantConverter(unittest.TestCase):
             for p in pairs:
                 self.assertEqual(p[1], self.func(w, p[0]))
 
+    def test_6(self):
+        expected_pairs = {
+            'applaud': [('aplood', 'aprood')],
+            'apple': [('apul', 'appur')],
+            'applebee': [('apulbii', 'appurbii')],
+            'applet': [('aplet' ,'aprett')],
+            'application': [('aplikeiʃon' ,'aprikeishoN')],
+            'apply': [('aplai', 'aprai')],
+            'pineapple': [('painapul', 'painappur')]
+        }
+        for w, pairs in expected_pairs.items():
+            for p in pairs:
+                self.assertEqual(p[1], self.func(w, p[0]))
 
 if __name__ == '__main__':
     unittest.main()

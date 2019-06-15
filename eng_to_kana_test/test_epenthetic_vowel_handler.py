@@ -177,5 +177,18 @@ class TestEpentheticVowelHandler(unittest.TestCase):
         for key, value in expected_pairs.items():
             self.assertEqual(value, self.func(key))
 
+    def test_6(self):
+        expected_pairs = {
+            'aprood': 'apuroodo',
+            'appur': 'appuru',
+            'appurbii': 'appurubii',
+            'aprett': 'apuretto',
+            'aprikeishoN': 'apurikeishoN',
+            'aprai': 'apurai',
+            'painappur': 'painappuru'
+        }
+        for key, value in expected_pairs.items():
+            self.assertEqual(value, self.func(key))
+
 if __name__ == '__main__':
     unittest.main()

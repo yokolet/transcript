@@ -18,6 +18,10 @@ class ConsonantConverter:
         # two letters, eʤ, æt or ʌp
         if len(ph) == 2 and p_idx == 1:
             return ph[p_idx]*2
+        # exception: original word contains apple, like apple, pineapple, applebee -- apul
+        elif p_idx-1 >= 0 and p_idx+2 < len(ph) and \
+            ph[p_idx-1] == 'a' and ph[p_idx+1] == 'u' and ph[p_idx+2] == 'l':
+            return ph[p_idx]*2
         # after 3 vowel sounds, like pooet
         elif p_idx >= 3 and ph[p_idx-1] in self.vowels and \
             ph[p_idx-2] in self.vowels and ph[p_idx-3] in self.vowels:

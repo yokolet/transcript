@@ -177,5 +177,18 @@ class TestMoraeCreator(unittest.TestCase):
         for key, value in expected_pairs.items():
             self.assertEqual(value, self.func(key))
 
+    def test_6(self):
+        expected_pairs = {
+            'apuroodo': 'a.pu.ro.o.do',
+            'appuru': 'a.p.pu.ru',
+            'appurubii': 'a.p.pu.ru.bi.i',
+            'apuretto': 'a.pu.re.t.to',
+            'apurikeishoN': 'a.pu.ri.ke.i.sho.N',
+            'apurai': 'a.pu.ra.i',
+            'painappuru': 'pa.i.na.p.pu.ru'
+        }
+        for key, value in expected_pairs.items():
+            self.assertEqual(value, self.func(key))
+
 if __name__ == '__main__':
     unittest.main()
