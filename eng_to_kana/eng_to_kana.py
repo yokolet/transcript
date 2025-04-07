@@ -50,6 +50,8 @@ def process_args():
                         help='space separated word list to be transcripted')
     parser.add_argument('-f', '--file', help='a filename of english words. \
         if not given, reads from command line arguments')
+    parser.add_argument('-s', '--single', action='store_true',
+                        help='output single word without formatting (first word only)')
     return parser
 
 if __name__ == '__main__':
@@ -58,7 +60,12 @@ if __name__ == '__main__':
     if args.file:
         EngToKana().fromFile(args.file)
     elif args.word and len(args.word) > 0:
-        print(args.word)
-        print(EngToKana().fromWordList(args.word))
+        if args.single:
+            # Take first word only and print first transcription without formatting
+            result = EngToKana().transcript(args.word[0])
+            print(result[0])
+        else:
+            print(args.word)
+            print(EngToKana().fromWordList(args.word))
     else:
         parser.print_help(sys.stderr)
